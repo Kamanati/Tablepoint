@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User View - Points Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Points Table</h1>
+
+    <table>
+        <tr>
+            <th>Department</th>
+            <th>Sport 1</th>
+            <th>Sport 2</th>
+            <th>Sport 3</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.department }}</td>
+            <td>{{ row.sport1 }}</td>
+            <td>{{ row.sport2 }}</td>
+            <td>{{ row.sport3 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
