@@ -48,4 +48,4 @@ def admin():
     return render_template('admin_view.html')
 
 if __name__ == '__main__':
-    app.run(debug=True,port=4000)
+    app.run()
